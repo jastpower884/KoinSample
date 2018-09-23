@@ -4,24 +4,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.jastzeonic.koinsample.model.Creature
+import com.jastzeonic.koinsample.model.Dog
 import kotlinx.android.synthetic.main.activity_creature.*
+import org.koin.android.ext.android.inject
 
 class CreatureActivity : AppCompatActivity() {
-
-
     companion object {
         const val CREATURE_TYPE = "creature_type"
     }
 
-    lateinit var creature: Creature
+    private val creature:Dog by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_creature)
-
         val creatureType = intent.getIntExtra(CREATURE_TYPE, 0)
-
 
 
         Glide.with(this).load(creature.image())
