@@ -1,22 +1,37 @@
 package com.jastzeonic.koinsample
 
-import com.jastzeonic.koinsample.model.Cat
-import com.jastzeonic.koinsample.model.Creature
-import com.jastzeonic.koinsample.model.Dog
-import com.jastzeonic.koinsample.model.Godzilla
+import com.jastzeonic.koinsample.model.*
+import org.koin.core.scope.Scope
 import org.koin.dsl.module.module
 
 val creatureModule = module {
 
-    factory { (creatureType: Int) ->
-        when (creatureType) {
-            Creature.TYPE_DOG -> Dog()
-            Creature.TYPE_CAT -> Cat()
-            Creature.TYPE_GODZILLA -> Godzilla()
-            else -> {
-                Dog()
-            }
-        }
+
+    scope("DogSession") {
+        Dog()
+    }
+
+    single {
+        Cat()
+    }
+
+
+    module("Dog") {
+        factory { CreaturePackage(get()) }
+        single { Dog() as Creature }
+
+    }
+
+    module("Cat") {
+        factory { CreaturePackage(get()) }
+        single { Cat() as Creature }
+
+    }
+
+    module("Godzilla") {
+        factory { CreaturePackage(get()) }
+        single { Godzilla() as Creature }
+
     }
 
 

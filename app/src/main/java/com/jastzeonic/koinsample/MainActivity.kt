@@ -12,15 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        creatureDogButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, CreatureActivity::class.java)
-            intent.putExtra(CreatureActivity.CREATURE_TYPE, Creature.TYPE_DOG)
+        scopeDemoButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ScopeDemoActivity::class.java)
             startActivity(intent)
         }
 
-        creatureCatButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, CreatureActivity::class.java)
-            intent.putExtra(CreatureActivity.CREATURE_TYPE, Creature.TYPE_CAT)
+        namingDemoButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, NamingDemoActivity::class.java)
             startActivity(intent)
         }
 

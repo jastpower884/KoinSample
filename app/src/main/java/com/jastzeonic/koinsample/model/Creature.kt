@@ -10,4 +10,5 @@ interface Creature {
 
     fun image(): String
     fun shout(): String
+    fun name():String
 }
