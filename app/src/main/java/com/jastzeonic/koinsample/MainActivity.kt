@@ -3,6 +3,7 @@ package com.jastzeonic.koinsample
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.jastzeonic.koinsample.model.Creature
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,18 +14,19 @@ class MainActivity : AppCompatActivity() {
 
         creatureDogButton.setOnClickListener {
             val intent = Intent(this@MainActivity, CreatureActivity::class.java)
+            intent.putExtra(CreatureActivity.CREATURE_TYPE, Creature.TYPE_DOG)
             startActivity(intent)
         }
 
         creatureCatButton.setOnClickListener {
             val intent = Intent(this@MainActivity, CreatureActivity::class.java)
-//            intent.putExtra(CreatureActivity.CREATURE_TYPE, CreatureModule.CAT)
+            intent.putExtra(CreatureActivity.CREATURE_TYPE, Creature.TYPE_CAT)
             startActivity(intent)
         }
 
         creatureGodzillaButton.setOnClickListener {
             val intent = Intent(this@MainActivity, CreatureActivity::class.java)
-//            intent.putExtra(CreatureActivity.CREATURE_TYPE, CreatureModule.GODZILLA)
+            intent.putExtra(CreatureActivity.CREATURE_TYPE, Creature.TYPE_GODZILLA)
             startActivity(intent)
         }
 
